@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16
+    container_name: nest_shop_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: nest
+      POSTGRES_PASSWORD: nestpass
+      POSTGRES_DB: nest_shop
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest_shop_backend
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_USER: nest
+      DATABASE_PASSWORD: nestpass
+      DATABASE_NAME: nest_shop
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    command: ["yarn", "start:prod"]
+
+volumes:
+  db_data:
