@@ -7,6 +7,7 @@ import { RolesModule } from './roles/roles.module';
 import { UserRolesModule } from './user-roles/user-roles.module';
 import { CategoriesModule } from './categories/categories.module';
 import { ProductsModule } from './products/products.module';
+import { ProductCategoriesModule } from './product-categories/product-categories.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ProductsModule } from './products/products.module';
     UserRolesModule,
     CategoriesModule,
     ProductsModule,
+    ProductCategoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

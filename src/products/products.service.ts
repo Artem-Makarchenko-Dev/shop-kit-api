@@ -11,7 +11,7 @@ export class ProductsService {
     return price - price * ((discount ?? 0) / 100);
   }
 
-  private async getExistingProduct(id: number) {
+  async getExistingProduct(id: number) {
     const product = await this.prisma.product.findUnique({ where: { id } });
     if (!product) {
       throw new NotFoundException(`Product with id ${id} not found`);
