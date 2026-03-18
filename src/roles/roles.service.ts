@@ -7,7 +7,7 @@ import { UpdateRoleDto } from './dto/update-role.dto';
 export class RolesService {
   constructor(private readonly prisma: PrismaService) {}
 
-  private async getExistingRole(id: number) {
+  async getExistingRole(id: number) {
     const role = await this.prisma.role.findUnique({ where: { id } });
     if (!role) {
       throw new NotFoundException(`Role with id ${id} not found`);
