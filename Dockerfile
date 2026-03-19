@@ -26,4 +26,4 @@ COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/src/main.js"]
+CMD ["sh", "-c", "until npx prisma migrate deploy; do sleep 2; done && node dist/src/main.js"]
