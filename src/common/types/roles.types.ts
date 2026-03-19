@@ -1,0 +1,7 @@
+export enum USER_ROLES {
+  ADMIN = 'ADMIN',
+  MANAGER = 'MANAGER',
+  USER = 'USER',
+}
+
+export type UserRole = USER_ROLES.ADMIN | USER_ROLES.MANAGER | USER_ROLES.USER;
